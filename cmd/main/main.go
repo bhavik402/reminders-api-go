@@ -17,9 +17,9 @@ func main() {
 	// crete configuration
 	var cfg app.Config
 	var env string
-	flag.IntVar(&cfg.Port, "port", 8338, "Server Port")
+	flag.IntVar(&cfg.Port, "port", 8452, "Server Port")
 	flag.StringVar(&env, "env", "dev", "Environment: dev|prod")
-	flag.StringVar(&cfg.Db.DriverName, "driverName", "json", "Driver Name: sqlite|postgres|mysql")
+	flag.StringVar(&cfg.Db.DriverName, "driverName", "sqlite", "Driver Name: sqlite|postgres|mysql")
 	flag.StringVar(&cfg.Db.Dsn, "dsn", "reminders.db", "DB DSN")
 	flag.IntVar(&cfg.Db.MaxOpenConns, "db-max-open-conns", 25, "max open connections")
 	flag.IntVar(&cfg.Db.MaxIdleConns, "db-max-idle-conns", 25, "max idle connections")
@@ -54,7 +54,7 @@ func main() {
 	fmt.Println("Started Server...")
 	err = server.ListenAndServe()
 	if err != nil {
+		panic(err)
 		app.Logger.Fatal("Failed to start server")
-		panic("Failed to start server")
 	}
 }
