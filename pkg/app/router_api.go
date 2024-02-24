@@ -21,14 +21,14 @@ func (a *App) WebApiRouter() *httprouter.Router {
 			addCorsHeaders(&w)
 		},
 	)
-	router.HandlerFunc(http.MethodGet, "/reminders/v1/", a.GetAllReminders)
-	router.HandlerFunc(http.MethodPost, "/reminders/v1/", a.CreateAReminder)
+	router.HandlerFunc(http.MethodGet, "/v1/reminders/", a.GetAllReminders)
+	router.HandlerFunc(http.MethodPost, "/v1/reminders/", a.CreateAReminder)
 
-	router.HandlerFunc(http.MethodGet, "/reminders/v1/:id", a.GetAReminder)
-	router.HandlerFunc(http.MethodDelete, "/reminders/v1/:id", a.RemoveAReminder)
+	router.HandlerFunc(http.MethodGet, "/v1/reminders/:id", a.GetAReminder)
+	router.HandlerFunc(http.MethodDelete, "/v1/reminders/:id", a.RemoveAReminder)
 
-	router.HandlerFunc(http.MethodPut, "/reminders/v1/status/:id", a.FlipStatusReminder)
-	router.HandlerFunc(http.MethodPut, "/reminders/v1/flag/:id", a.FlipFlagReminder)
+	router.HandlerFunc(http.MethodPut, "/v1/reminders/status/:id", a.FlipStatusReminder)
+	router.HandlerFunc(http.MethodPut, "/v1/reminders/flag/:id", a.FlipFlagReminder)
 
 	return router
 }
