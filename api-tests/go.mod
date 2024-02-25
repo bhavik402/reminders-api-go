@@ -1,3 +1,3 @@
-module github.com/bhavik3210/reminders-service/integration
+module github.com/bhavik402/reminders-api-go/integration
 
-go 1.21.5
+go 1.22.0
