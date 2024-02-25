@@ -5,7 +5,7 @@ test:
 	go test ./...
 
 air: 
-	air
+	cd api-rest && air
 
 inttest:
 	pushd integration && go run cmd/main/main.go
