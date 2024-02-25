@@ -6,9 +6,11 @@ import (
 	"io"
 	"net/http"
 	"strconv"
+
+	"github.com/pterm/pterm"
 )
 
-func GetAllRecords() error {
+func RunAllGetTests(logger *pterm.Logger) error {
 	var url string = "http://localhost:8452/v1/reminders"
 
 	res, err := http.Get(url)
@@ -36,7 +38,8 @@ func GetAllRecords() error {
 		return fmt.Errorf("❌ Failed to GET records: with StatusCode == %s: ", strconv.Itoa(res.StatusCode))
 	}
 
-	fmt.Printf("✅ Test for GET: %s Successfully Comlpeted with %s many records \n", url, strconv.Itoa(len(records)))
+	logOutput := fmt.Sprintf("✅ Test for GET: %s Successfully Comlpeted with %s many records \n", url, strconv.Itoa(len(records)))
+	logger.Info(logOutput)
 
 	return nil
 }

@@ -1,25 +1,31 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/bhavik402/remidners-api-go/integration/pkg"
+	"github.com/pterm/pterm"
 )
 
 func main() {
-	fmt.Println("Integration tests")
+	printTitle()
 
 	// todo: implement this in an CI run, but in an isolated container
+	logger := pterm.DefaultLogger.
+		WithLevel(pterm.LogLevelTrace)
 
-	err := pkg.PostAllRecords()
+	err := pkg.RunAllPostTests(logger)
 	if err != nil {
-		panic(err)
+		logger.Fatal(err.Error())
 	}
 
-	err = pkg.GetAllRecords()
+	err = pkg.RunAllGetTests(logger)
 	if err != nil {
-		panic(err)
+		logger.Fatal(err.Error())
 	}
 
 	//delete records after completion no need if this will isolated in a container
+}
+
+func printTitle() {
+	pterm.DefaultHeader.WithBackgroundStyle(pterm.NewStyle(pterm.BgLightYellow)).WithFullWidth().Println("Running Integration Tests")
+	pterm.Println()
 }

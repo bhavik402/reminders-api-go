@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+
+	"github.com/pterm/pterm"
 )
 
 //go:embed reminders_records.json
@@ -22,7 +24,7 @@ func ReadRecords() ([]Reminder, error) {
 	return rr, nil
 }
 
-func PostAllRecords() error {
+func RunAllPostTests(logger *pterm.Logger) error {
 	var url string = "http://localhost:8452/v1/reminders"
 
 	records, err := ReadRecords()
@@ -44,7 +46,8 @@ func PostAllRecords() error {
 		}
 	}
 
-	fmt.Printf("✅ Test for POST: %s Successfully completed \n", url)
+	logOutput := fmt.Sprintf("✅ Test for POST: %s Successfully Completed \n", url)
+	logger.Info(logOutput)
 
 	return nil
 }
