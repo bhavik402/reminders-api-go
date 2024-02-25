@@ -6,21 +6,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 )
 
 //go:embed reminders_records.json
 var remindersRecords []byte
-
-type Reminder struct {
-	Title    string   `json:"title,omitempty"`
-	Status   string   `json:"status,omitempty"`
-	Notes    string   `json:"notes,omitempty"`
-	Category string   `json:"category,omitempty"`
-	Priority string   `json:"priority,omitempty"`
-	Flag     bool     `json:"flag,omitempty"`
-	Tags     []string `json:"tags,omitempty"`
-	DueOn    string   `json:"dueOn,omitempty"`
-}
 
 func ReadRecords() ([]Reminder, error) {
 	var rr []Reminder
@@ -50,11 +40,11 @@ func PostAllRecords() error {
 		}
 
 		if res.StatusCode != http.StatusOK {
-			fmt.Println("❌ Failed to Post")
+			return fmt.Errorf("❌ Failed to POST record: with StatusCode == %s: ", strconv.Itoa(res.StatusCode))
 		}
 	}
 
-	fmt.Printf("✅ Test for %s Successfully completed \n", url)
+	fmt.Printf("✅ Test for POST: %s Successfully completed \n", url)
 
 	return nil
 }
