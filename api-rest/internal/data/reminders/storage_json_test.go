@@ -5,10 +5,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/bhavik3210/reminders/reminders-api/internal/data/reminders"
+	"github.com/bhavik402/remidners-api-go/api-rest/internal/data/reminders"
 	"github.com/stretchr/testify/assert"
 )
-var(
+
+var (
 	testDBFile = "testDB.json"
 )
 
@@ -27,13 +28,13 @@ func setup() *reminders.JsonStorage {
 }
 
 func cleanup() {
-	err := os.Remove(testDBFile) 
+	err := os.Remove(testDBFile)
 	if err != nil {
 		fmt.Printf("failed to delete test json file %s", err)
 	}
 }
 
-func TestSimpleWritet (t *testing.T) {
+func TestSimpleWritet(t *testing.T) {
 	s := setup()
 	r := reminders.Reminder{
 		Title: "test title",
@@ -44,5 +45,5 @@ func TestSimpleWritet (t *testing.T) {
 		t.Error("failed to save reminder: %w", err)
 	}
 
-	assert.Equal(t,nil,  err, "err is nil")
+	assert.Equal(t, nil, err, "err is nil")
 }

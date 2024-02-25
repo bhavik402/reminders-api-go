@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/bhavik3210/reminders/reminders-api/internal/data/reminders"
+	"github.com/bhavik402/remidners-api-go/api-rest/internal/data/reminders"
 	"go.uber.org/zap"
 )
 
@@ -29,9 +29,9 @@ type Models struct {
 }
 
 type App struct {
-	Cfg     Config
-	Logger  *zap.Logger
-	Models 	*Models
+	Cfg    Config
+	Logger *zap.Logger
+	Models *Models
 }
 
 func NewApp(cfg Config) (*App, error) {
@@ -47,14 +47,13 @@ func NewApp(cfg Config) (*App, error) {
 	}
 
 	return &App{
-		Cfg:     cfg,
-		Logger:  l,
+		Cfg:    cfg,
+		Logger: l,
 		Models: &Models{
 			Reminders: rms,
 		},
 	}, nil
 }
-
 
 func getZapLogger(e EnvironmentType) (*zap.Logger, error) {
 	switch e {

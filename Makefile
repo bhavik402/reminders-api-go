@@ -7,3 +7,5 @@ test:
 air: 
 	air
 
+inttest:
+	pushd integration && go run cmd/main/main.go

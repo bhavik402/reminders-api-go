@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/bhavik3210/reminders/reminders-api/internal/data/reminders"
+	"github.com/bhavik402/remidners-api-go/api-rest/internal/data/reminders"
 	"github.com/google/uuid"
 	"github.com/julienschmidt/httprouter"
 	"go.uber.org/zap"
@@ -107,22 +107,21 @@ func (a *App) CreateAReminder(w http.ResponseWriter, r *http.Request) {
 
 	err = a.Models.Reminders.Storage.Save(&rm)
 
-
 	if err != nil {
 		// fmt.Println(err.Error())
 		//todo: these currently do the same thing but need to differentiate and clean
 		switch {
-		case errors.Is(err, reminders.ErrFailedToOpenDB): 
-			w.WriteHeader(http.StatusInternalServerError)	
+		case errors.Is(err, reminders.ErrFailedToOpenDB):
+			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte(err.Error()))
-		case errors.Is(err, reminders.ErrFailedToOpenDB): 
-			w.WriteHeader(http.StatusInternalServerError)	
-			w.Write([]byte(err.Error()))	
-		case errors.Is(err, reminders.ErrFailedToOpenDB): 
-			w.WriteHeader(http.StatusInternalServerError)	
-			w.Write([]byte(err.Error()))	
+		case errors.Is(err, reminders.ErrFailedToOpenDB):
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(err.Error()))
+		case errors.Is(err, reminders.ErrFailedToOpenDB):
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(err.Error()))
 		default:
-			w.WriteHeader(http.StatusInternalServerError)	
+			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte(err.Error()))
 		}
 	} else {
