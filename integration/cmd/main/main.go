@@ -22,6 +22,12 @@ func main() {
 		logger.Fatal(err.Error())
 	}
 
+	result, err := pkg.RunAllPutTests()
+	if err != nil {
+		logger.Fatal(err.Error())
+	}
+	logger.Info(*result)
+
 	//delete records after completion no need if this will isolated in a container
 }
 

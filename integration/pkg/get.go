@@ -22,7 +22,7 @@ func RunAllGetTests(logger *pterm.Logger) error {
 		return fmt.Errorf("❌ Failed to GET any records")
 	}
 
-	logOutput := fmt.Sprintf("✅ Test for GET: %s Successfully Comlpeted with %s many records \n", url, strconv.Itoa(len(records)))
+	logOutput := fmt.Sprintf("✅ Test for GET: %s Successfully Completed with %s many records \n", url, strconv.Itoa(len(records)))
 	logger.Info(logOutput)
 
 	return nil
@@ -38,7 +38,7 @@ func requestAndGetAllRecords(url string) ([]Reminder, error) {
 		return nil, fmt.Errorf("❌ Failed to GET records: with StatusCode == %s: ", strconv.Itoa(res.StatusCode))
 	}
 
-	var records []Reminder
+	records := make([]Reminder, 0)
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {

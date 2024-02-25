@@ -1,6 +1,7 @@
 package pkg
 
 type Reminder struct {
+	Id       string   `json:"id,omitempty"`
 	Title    string   `json:"title,omitempty"`
 	Status   string   `json:"status,omitempty"`
 	Notes    string   `json:"notes,omitempty"`
