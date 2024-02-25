@@ -1,0 +1,19 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "Reminders",
+      "database": "${workspaceFolder:reminders-api-go}/api-rest/reminders.db"
+    }
+  ],
+  "macros": {
+    "run-integration-tests": [
+        "workbench.action.terminal.sendSequence",
+        {
+            "command": "workbench.action.terminal.sendSequence", 
+            "args": { "text": "make inttest \n" }
+        },
+    ]
+  }
+}
