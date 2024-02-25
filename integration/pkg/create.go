@@ -12,14 +12,14 @@ import (
 var remindersRecords []byte
 
 type Reminder struct {
-	Title    string   `json:"title"`
-	Status   string   `json:"status"`
-	Notes    string   `json:"notes"`
-	Category string   `json:"category"`
-	Priority string   `json:"priority"`
-	Flag     bool     `json:"flag"`
-	Tags     []string `json:"tags"`
-	DueOn    string   `json:"dueOn"`
+	Title    string   `json:"title,omitempty"`
+	Status   string   `json:"status,omitempty"`
+	Notes    string   `json:"notes,omitempty"`
+	Category string   `json:"category,omitempty"`
+	Priority string   `json:"priority,omitempty"`
+	Flag     bool     `json:"flag,omitempty"`
+	Tags     []string `json:"tags,omitempty"`
+	DueOn    string   `json:"dueOn,omitempty"`
 }
 
 func ReadRecords() ([]Reminder, error) {
