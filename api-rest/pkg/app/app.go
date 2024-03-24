@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/bhavik402/remidners-api-go/api-rest/internal/data/reminders"
+	"github.com/bhavik402/reminders-api-go/api-rest/internal/data/reminders"
 	"go.uber.org/zap"
 )
 

@@ -1,4 +1,4 @@
-module github.com/bhavik402/remidners-api-go/api-rest
+module github.com/bhavik402/reminders-api-go/api-rest
 
 go 1.22.0
 

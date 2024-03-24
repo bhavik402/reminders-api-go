@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/bhavik402/remidners-api-go/api-rest/internal/data/reminders"
+	"github.com/bhavik402/reminders-api-go/api-rest/internal/data/reminders"
 	"github.com/google/uuid"
 	"github.com/julienschmidt/httprouter"
 	"go.uber.org/zap"
