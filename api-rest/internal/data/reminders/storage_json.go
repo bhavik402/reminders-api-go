@@ -30,7 +30,7 @@ func (s *JsonStorage) Save(r *Reminder) error {
 
 	b, err := json.Marshal(reminders)
 	if err != nil {
-			return err
+		return err
 	}
 	fmt.Println(string(b))
 
@@ -49,7 +49,7 @@ func (s *JsonStorage) ReadAll() ([]Reminder, error) {
 	}
 	b, err := json.Marshal(reminders)
 	if err != nil {
-			return []Reminder{}, err
+		return []Reminder{}, err
 	}
 	fmt.Println(string(b))
 	return reminders, nil

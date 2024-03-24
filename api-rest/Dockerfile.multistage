@@ -18,4 +18,3 @@ COPY --from=build-stage app/reminders-api reminders-api
 EXPOSE 8452
 USER nonroot:nonroot
 ENTRYPOINT ["./reminders-api"]
-
